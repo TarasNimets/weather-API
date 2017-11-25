@@ -22,8 +22,8 @@ public final class SwingFrameManager {
     public static final String ENTER_NAME_OF_CITY = "Enter name of city";
     public static final String SIX_DAY = "SixDay";
     public static final String TREE_DAY = "TreeDay";
-    public static final String TOMORROW = "Tomorrow";
-    public static final String TODAY = "Today";
+    public static final String NEXT_DAY = "nextDay";
+    public static final String ONE_DAY = "oneDay";
 
     private static TableColumnModel columnModel;
     private static boolean previousResize = false;
@@ -86,11 +86,11 @@ public final class SwingFrameManager {
     }
 
     public final void changeTableModel(String previosButtonSelected) {
-        if (previosButtonSelected.equals(TOMORROW)) {
+        if (previosButtonSelected.equals(NEXT_DAY)) {
             table.setModel(TomorrowTableM.getInstance());
             if (weather != null)
                 TomorrowTableM.getInstance().setWeather(weather, 1);
-        } else if (previosButtonSelected.equals(TODAY)) {
+        } else if (previosButtonSelected.equals(ONE_DAY)) {
             table.setModel(TodayTableM.getInstance());
             if (weather != null)
                 TodayTableM.getInstance().setWeather(weather, 0);

@@ -72,10 +72,10 @@ public final class SwingFrame extends JFrame {
     private FlowLayout statusPanelFlowL = (FlowLayout) statusPanel.getLayout();
     private JComboBox<String> lenguageComboBox = new JComboBox<>();
     private JButton searchButton = new JButton("Search");
-    private JButton todayWButton = new JButton("Weather for today");
-    private JButton tomorrowWButton = new JButton("Weather for tomorrow");
-    private JButton treeDWButton = new JButton("Weather for 3 days");
-    private JButton sixDWButton = new JButton("Weather for 6 days");
+    private JButton oneDayButton = new JButton("Weather for one day");
+    private JButton nextDayButton = new JButton("Weather for nex day");
+    private JButton treeDaysButton = new JButton("Weather for tree days");
+    private JButton sixDaysButton = new JButton("Weather for six days");
     private JLabel lenguageLabel = new JLabel("Language");
     private JTextField cityNameField = new JTextField();
     private JTextArea generalWTextArea = new JTextArea();
@@ -107,7 +107,7 @@ public final class SwingFrame extends JFrame {
         initShowTable();
         initShowWeatherButton();
         resizedJFrame();
-        setTitle("Weather API");
+        setTitle("Weather API v.1.0");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -242,34 +242,34 @@ public final class SwingFrame extends JFrame {
 
     private void initShowWeatherButton() {
         buttonWeatherPanel.setLayout(new GridLayout(1, 0, 0, 0));
-        todayWButton.setFont(WEATHER_BUTTON_FONT);
-        todayWButton.setBackground(CHOOSE_BACKGROUND_COLOR);
-        todayWButton.setActionCommand(SwingFrameManager.TODAY);
-        previosButtonSelected = todayWButton.getActionCommand();
-        todayWButton.addActionListener(actionListener);
-        buttonWeatherPanel.add(todayWButton);
+        oneDayButton.setFont(WEATHER_BUTTON_FONT);
+        oneDayButton.setBackground(CHOOSE_BACKGROUND_COLOR);
+        oneDayButton.setActionCommand(SwingFrameManager.ONE_DAY);
+        previosButtonSelected = oneDayButton.getActionCommand();
+        oneDayButton.addActionListener(actionListener);
+        buttonWeatherPanel.add(oneDayButton);
 
-        tomorrowWButton.setFont(WEATHER_BUTTON_FONT);
-        tomorrowWButton.setActionCommand(SwingFrameManager.TOMORROW);
-        tomorrowWButton.addActionListener(actionListener);
-        buttonWeatherPanel.add(tomorrowWButton);
+        nextDayButton.setFont(WEATHER_BUTTON_FONT);
+        nextDayButton.setActionCommand(SwingFrameManager.NEXT_DAY);
+        nextDayButton.addActionListener(actionListener);
+        buttonWeatherPanel.add(nextDayButton);
 
-        treeDWButton.setFont(WEATHER_BUTTON_FONT);
-        treeDWButton.setActionCommand(SwingFrameManager.TREE_DAY);
-        treeDWButton.addActionListener(actionListener);
-        buttonWeatherPanel.add(treeDWButton);
+        treeDaysButton.setFont(WEATHER_BUTTON_FONT);
+        treeDaysButton.setActionCommand(SwingFrameManager.TREE_DAY);
+        treeDaysButton.addActionListener(actionListener);
+        buttonWeatherPanel.add(treeDaysButton);
 
-        sixDWButton.setFont(WEATHER_BUTTON_FONT);
-        sixDWButton.setActionCommand(SwingFrameManager.SIX_DAY);
-        sixDWButton.addActionListener(actionListener);
-        buttonWeatherPanel.add(sixDWButton);
+        sixDaysButton.setFont(WEATHER_BUTTON_FONT);
+        sixDaysButton.setActionCommand(SwingFrameManager.SIX_DAY);
+        sixDaysButton.addActionListener(actionListener);
+        buttonWeatherPanel.add(sixDaysButton);
 
         buttonMap = new HashMap<String, JButton>() {
             {
-                put(todayWButton.getActionCommand(), todayWButton);
-                put(tomorrowWButton.getActionCommand(), tomorrowWButton);
-                put(treeDWButton.getActionCommand(), treeDWButton);
-                put(sixDWButton.getActionCommand(), sixDWButton);
+                put(oneDayButton.getActionCommand(), oneDayButton);
+                put(nextDayButton.getActionCommand(), nextDayButton);
+                put(treeDaysButton.getActionCommand(), treeDaysButton);
+                put(sixDaysButton.getActionCommand(), sixDaysButton);
             }
         };
     }
