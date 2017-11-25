@@ -7,10 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import com.tec.data.weather.model.NowWeatherModel;
-import com.tec.data.weather.model.tablemodel.SixDayTableM;
-import com.tec.data.weather.model.tablemodel.TodayTableM;
-import com.tec.data.weather.model.tablemodel.TomorrowTableM;
-import com.tec.data.weather.model.tablemodel.TreeDayTableM;
+import com.tec.data.weather.model.TableModel;
 import com.tec.data.weather.model.weather.Day;
 import com.tec.data.weather.model.weather.Weather;
 import com.tec.data.weather.utils.Error;
@@ -24,13 +21,18 @@ public final class SwingFrameManager {
     public static final String TREE_DAY = "TreeDay";
     public static final String NEXT_DAY = "nextDay";
     public static final String ONE_DAY = "oneDay";
+    public static final TableModel DEFAULT_TABLE_MODEL = new TableModel(); 
 
     private static TableColumnModel columnModel;
     private static boolean previousResize = false;
     private JTable table;
     private static Weather weather;
     private int currentWidth;
+    public final TableModel nextDayTableModel = new TableModel(); 
+    public final TableModel treeDaysTableModel = new TableModel(); 
+    public final TableModel sixDaysTableModel = new TableModel(); 
 
+    
     public SwingFrameManager(JTable table) {
         this.table = table;
     }
@@ -87,21 +89,21 @@ public final class SwingFrameManager {
 
     public final void changeTableModel(String previosButtonSelected) {
         if (previosButtonSelected.equals(NEXT_DAY)) {
-            table.setModel(TomorrowTableM.getInstance());
+            table.setModel(nextDayTableModel);
             if (weather != null)
-                TomorrowTableM.getInstance().setWeather(weather, 1);
+                nextDayTableModel.setWeather(weather, 1, 1);
         } else if (previosButtonSelected.equals(ONE_DAY)) {
-            table.setModel(TodayTableM.getInstance());
+            table.setModel(DEFAULT_TABLE_MODEL);
             if (weather != null)
-                TodayTableM.getInstance().setWeather(weather, 0);
+                DEFAULT_TABLE_MODEL.setWeather(weather, 0, 1);
         } else if (previosButtonSelected.equals(TREE_DAY)) {
-            table.setModel(TreeDayTableM.getInstance());
+            table.setModel(treeDaysTableModel);
             if (weather != null)
-                TreeDayTableM.getInstance().setWeather(weather, 0);
+                treeDaysTableModel.setWeather(weather, 0, 3);
         } else if (previosButtonSelected.equals(SIX_DAY)) {
-            table.setModel(SixDayTableM.getInstance());
+            table.setModel(sixDaysTableModel);
             if (weather != null)
-                SixDayTableM.getInstance().setWeather(weather, 0);
+                sixDaysTableModel.setWeather(weather, 0, 6);
         }
         resizeTable(DEFAULT_WIDTH_FRAME <= currentWidth, currentWidth);
         table.updateUI();

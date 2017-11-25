@@ -38,7 +38,7 @@ import javax.swing.table.TableCellRenderer;
 import com.tec.data.weather.controller.SwingFrameManager;
 import com.tec.data.weather.controller.TableRenderer;
 import com.tec.data.weather.model.NowWeatherModel;
-import com.tec.data.weather.model.tablemodel.TodayTableM;
+import com.tec.data.weather.model.TableModel;
 
 @SuppressWarnings("serial")
 public final class SwingFrame extends JFrame {
@@ -231,7 +231,7 @@ public final class SwingFrame extends JFrame {
     private void initShowTable() {
         table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         table.setColumnSelectionAllowed(true);
-        table.setModel(TodayTableM.getInstance());
+        table.setModel(SwingFrameManager.DEFAULT_TABLE_MODEL);
         table.setFont(WEATHER_BUTTON_FONT);
         table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
