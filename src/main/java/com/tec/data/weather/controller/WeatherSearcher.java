@@ -16,7 +16,7 @@ public class WeatherSearcher {
     public static Weather getWeather(String city) {
 
         try {
-            URL url = new URL(STARTED_URL + MY_KEY + "&q=" + city + "&days=6");
+            URL url = new URL(STARTED_URL + MY_KEY + "&q=" + city + "&days=10");
 
             Scanner scanner = new Scanner(url.openStream());
             StringBuilder stringBuilder = new StringBuilder();

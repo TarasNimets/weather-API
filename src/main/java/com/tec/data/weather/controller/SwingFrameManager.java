@@ -1,5 +1,7 @@
 package com.tec.data.weather.controller;
 
+import java.time.LocalDate;
+
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -12,6 +14,8 @@ import com.tec.data.weather.model.weather.Day;
 import com.tec.data.weather.model.weather.Weather;
 import com.tec.data.weather.utils.Error;
 
+import javafx.scene.control.DatePicker;
+
 public final class SwingFrameManager {
 
     public static final int DEFAULT_WIDTH_FRAME = 1366;
@@ -21,6 +25,7 @@ public final class SwingFrameManager {
     public static final String TREE_DAY = "TreeDay";
     public static final String NEXT_DAY = "nextDay";
     public static final String ONE_DAY = "oneDay";
+    public static final String ANY_PERIOD = "anyPeriod";
     public static final TableModel DEFAULT_TABLE_MODEL = new TableModel(); 
 
     private static TableColumnModel columnModel;
@@ -30,7 +35,8 @@ public final class SwingFrameManager {
     private int currentWidth;
     public final TableModel nextDayTableModel = new TableModel(); 
     public final TableModel treeDaysTableModel = new TableModel(); 
-    public final TableModel sixDaysTableModel = new TableModel(); 
+    public final TableModel sixDaysTableModel = new TableModel();
+    public final TableModel anyPeriodTableModel = new TableModel(); 
 
     
     public SwingFrameManager(JTable table) {
@@ -57,7 +63,7 @@ public final class SwingFrameManager {
             previousResize = false;
         }
         table.setRowHeight(25);
-        table.setRowHeight(2, 65);
+        table.setRowHeight(3, 65);
     }
 
     public final void searchButtonPressed(JTextField cityNameField, NowWeatherModel model, JTextArea generalWTextArea,
@@ -104,6 +110,11 @@ public final class SwingFrameManager {
             table.setModel(sixDaysTableModel);
             if (weather != null)
                 sixDaysTableModel.setWeather(weather, 0, 6);
+        } else if (previosButtonSelected.equals(ANY_PERIOD)) {
+            Error.errorMessage("not working yet");
+//            table.setModel(anyPeriodTableModel);
+//            if (weather != null)
+//                anyPeriodTableModel.setWeather(weather, 0, 3);
         }
         resizeTable(DEFAULT_WIDTH_FRAME <= currentWidth, currentWidth);
         table.updateUI();

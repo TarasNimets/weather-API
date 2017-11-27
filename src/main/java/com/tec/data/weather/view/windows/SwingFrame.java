@@ -38,7 +38,6 @@ import javax.swing.table.TableCellRenderer;
 import com.tec.data.weather.controller.SwingFrameManager;
 import com.tec.data.weather.controller.TableRenderer;
 import com.tec.data.weather.model.NowWeatherModel;
-import com.tec.data.weather.model.TableModel;
 
 @SuppressWarnings("serial")
 public final class SwingFrame extends JFrame {
@@ -76,6 +75,7 @@ public final class SwingFrame extends JFrame {
     private JButton nextDayButton = new JButton("Weather for nex day");
     private JButton treeDaysButton = new JButton("Weather for tree days");
     private JButton sixDaysButton = new JButton("Weather for six days");
+    private final JButton anyPeriodButton = new JButton("Weather for any period");
     private JLabel lenguageLabel = new JLabel("Language");
     private JTextField cityNameField = new JTextField();
     private JTextArea generalWTextArea = new JTextArea();
@@ -263,6 +263,11 @@ public final class SwingFrame extends JFrame {
         sixDaysButton.setActionCommand(SwingFrameManager.SIX_DAY);
         sixDaysButton.addActionListener(actionListener);
         buttonWeatherPanel.add(sixDaysButton);
+        
+        anyPeriodButton.setFont(WEATHER_BUTTON_FONT);
+        anyPeriodButton.setActionCommand(SwingFrameManager.ANY_PERIOD);
+        anyPeriodButton.addActionListener(actionListener);
+        buttonWeatherPanel.add(anyPeriodButton);
 
         buttonMap = new HashMap<String, JButton>() {
             {
@@ -270,6 +275,7 @@ public final class SwingFrame extends JFrame {
                 put(nextDayButton.getActionCommand(), nextDayButton);
                 put(treeDaysButton.getActionCommand(), treeDaysButton);
                 put(sixDaysButton.getActionCommand(), sixDaysButton);
+                put(anyPeriodButton.getActionCommand(), anyPeriodButton);
             }
         };
     }

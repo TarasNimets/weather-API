@@ -14,7 +14,7 @@ public final class Forecast {
     }
 
     public Forecastday getForecastday(int index) {
-        if (index < 0 || index > 6) {
+        if (index < 0 || index >= 10) {
             System.out.println("Incorrect forecastday index");
             return null;
         }

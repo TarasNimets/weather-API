@@ -35,7 +35,7 @@ public class TableRenderer extends JLabel implements TableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
             int row, int column) {
         if (weather != null) {
-            if (row == 2 && column != 0) {
+            if (row == 3 && column != 0) {
                 try {
                     URL url = new URL("http:" + value);
                     ImageIcon icon = new ImageIcon(url);
@@ -43,7 +43,7 @@ public class TableRenderer extends JLabel implements TableCellRenderer {
                 } catch (MalformedURLException e) {
                     System.out.println("can't load icon" + e.getMessage());
                 }
-            } else if ((row == 4 || row == 5 || (row >= 11 && row <= 13)) && column != 0) {
+            } else if ((row == 5 || row == 6 || (row >= 12 && row <= 14)) && column != 0) {
                 if (((double) value) > 0.0) {
                     setHorizontalAlignment(CENTER);
                     setForeground(FG_HOT_COLOR);
@@ -57,11 +57,11 @@ public class TableRenderer extends JLabel implements TableCellRenderer {
                 setHorizontalAlignment(RIGHT);
                 setForeground(FG_BLACK_COLOR);
                 setText("" + value);
-            } else if ((row == 3 || row == 14 || row == 15) && (value.equals(0) || value.equals(0.0))) {
+            } else if ((row == 4 || row == 15 || row == 16) && (value.equals(0) || value.equals(0.0))) {
                 setHorizontalAlignment(CENTER);
                 setForeground(FG_BLACK_COLOR);
                 setText("-");
-            } else if (column != 0 && row == 6) {
+            } else if (column != 0 && row == 7) {
                 if (!((int) value >= 750 && (int) value <= 760)) {
                     setHorizontalAlignment(CENTER);
                     setForeground(FG_HOT_COLOR);
