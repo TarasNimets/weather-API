@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -12,7 +14,10 @@ import javax.swing.table.TableCellRenderer;
 
 import com.tec.data.weather.model.weather.Weather;
 
+@SuppressWarnings("serial")
 public class TableRenderer extends JLabel implements TableCellRenderer {
+	
+	private static Logger LOG = Logger.getLogger(TableRenderer.class.getName());
 
     public static final Color FG_BLACK_COLOR = new Color(0, 0, 0);
     public static final Color FG_COLD_COLOR = new Color(35, 35, 237);
@@ -41,7 +46,7 @@ public class TableRenderer extends JLabel implements TableCellRenderer {
                     ImageIcon icon = new ImageIcon(url);
                     return new JLabel(icon, CENTER);
                 } catch (MalformedURLException e) {
-                    System.out.println("can't load icon" + e.getMessage());
+                	LOG.log(Level.INFO, "Can't load icon {0}", e.getMessage());
                 }
             } else if ((row == 5 || row == 6 || (row >= 12 && row <= 14)) && column != 0) {
                 if (((double) value) > 0.0) {
