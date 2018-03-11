@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class SwingFrameManager {
-
+	
     private static Logger LOG = Logger.getLogger(SwingFrameManager.class.getName());
 
     public static final int DEFAULT_WIDTH_FRAME = 1366;
@@ -76,7 +76,7 @@ public final class SwingFrameManager {
         }
         LOG.log(Level.INFO, "City - {0}", cityName);
         weather = WeatherSearcher.getWeather(cityName);
-        System.out.println(weather);
+        LOG.log(Level.INFO, "Weather: {0}", weather);
         if (weather == null)
             weather = WeatherSearcher.getWeather(CitySearcher.getCityName(cityName));
         if (weather == null)

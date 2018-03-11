@@ -78,7 +78,7 @@ public final class CitySearcher {
             scanner.close();
             createJsonObject(stringBuilder.toString());
         } catch (IOException e) {
-            LOG.log(Level.INFO, "{}", e.getMessage());
+            LOG.log(Level.INFO, "{0}", e.getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ public final class CitySearcher {
             jsonObject = (JSONObject) parser.parse(response);
             statusQuery = (String) jsonObject.get("status");
         } catch (ParseException e){
-            LOG.log(Level.INFO, "{}", e.getMessage());
+            LOG.log(Level.INFO, "{0}", e.getMessage());
         }
     }
 }

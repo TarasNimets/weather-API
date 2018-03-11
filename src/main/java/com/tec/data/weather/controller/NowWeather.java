@@ -4,8 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
 
 import com.tec.data.weather.model.NowWeatherModel;
 import com.tec.data.weather.model.weather.Current;
