@@ -1,7 +1,5 @@
 package com.tec.data.weather.controller;
 
-import java.time.LocalDate;
-
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -14,9 +12,12 @@ import com.tec.data.weather.model.weather.Day;
 import com.tec.data.weather.model.weather.Weather;
 import com.tec.data.weather.utils.Error;
 
-import javafx.scene.control.DatePicker;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class SwingFrameManager {
+
+    private static Logger LOG = Logger.getLogger(SwingFrameManager.class.getName());
 
     public static final int DEFAULT_WIDTH_FRAME = 1366;
     public static final int DEFAULT_HEIGHT_FRAME = 768;
@@ -73,12 +74,13 @@ public final class SwingFrameManager {
             Error.errorMessage("The city must be filled");
             return;
         }
-        System.out.println(cityName);
+        LOG.log(Level.INFO, "City - {0}", cityName);
         weather = WeatherSearcher.getWeather(cityName);
+        System.out.println(weather);
         if (weather == null)
             weather = WeatherSearcher.getWeather(CitySearcher.getCityName(cityName));
         if (weather == null)
-            weather = WeatherSearcher.getWeather(CitySearcher.getCityGeometry(cityName));
+            weather = WeatherSearcher.getWeather(CitySearcher.getCityGeometry());
         if (weather == null) {
             Error.warningMessage("This city is not supported");
             table.setModel(new DefaultTableModel());

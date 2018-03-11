@@ -60,36 +60,34 @@ public class TableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (columnIndex == 0) return rowHeaders(rowIndex);
         if (weather != null) {
-            if(columnIndex != 0) {
-                    switch (rowIndex) {
-                    case 0: { 
-                        if (previousDayIndex == -1) {
-                            previousDayIndex = weatherIndexs.get(columnIndex).dayIndex;
-                            return getWeekDay(previousDayIndex);
-                        }
-                        if (previousDayIndex == weatherIndexs.get(columnIndex).dayIndex) return "";
-                        else {
-                            previousDayIndex = weatherIndexs.get(columnIndex).dayIndex;
-                            return getWeekDay(previousDayIndex);
-                        }
+                switch (rowIndex) {
+                case 0: {
+                    if (previousDayIndex == -1) {
+                        previousDayIndex = weatherIndexs.get(columnIndex).dayIndex;
+                        return getWeekDay(previousDayIndex);
                     }
-                    case 1: return (hourNameIndex = (columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex) < 10 ? "0" + hourNameIndex + ":00" : hourNameIndex + ":00";
-                    case 2: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getCloud();
-                    case 3: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getCondition().getIcon();
-                    case 4: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getPrecip_mm();
-                    case 5: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getTemp_c();
-                    case 6: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getFeelslike_c();
-                    case 7: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getPressure_mb();
-                    case 8: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getWind_kph();
-                    case 9: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getWind_dir();
-                    case 10: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getHumidity();
-                    case 11: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getVis_km();
-                    case 12: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getWindchill_c();
-                    case 13: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getHeatindex_c();
-                    case 14: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getDewpoint_c();
-                    case 15: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getChance_of_rain();
-                    case 16: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getChance_of_snow();
+                    if (previousDayIndex == weatherIndexs.get(columnIndex).dayIndex) return "";
+                    else {
+                        previousDayIndex = weatherIndexs.get(columnIndex).dayIndex;
+                        return getWeekDay(previousDayIndex);
                     }
+                }
+                case 1: return (hourNameIndex = (columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex) < 10 ? "0" + hourNameIndex + ":00" : hourNameIndex + ":00";
+                case 2: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getCloud();
+                case 3: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getCondition().getIcon();
+                case 4: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getPrecip_mm();
+                case 5: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getTemp_c();
+                case 6: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getFeelslike_c();
+                case 7: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getPressure_mb();
+                case 8: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getWind_kph();
+                case 9: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getWind_dir();
+                case 10: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getHumidity();
+                case 11: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getVis_km();
+                case 12: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getWindchill_c();
+                case 13: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getHeatindex_c();
+                case 14: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getDewpoint_c();
+                case 15: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getChance_of_rain();
+                case 16: return weather.getForecast().getForecastday(weatherIndexs.get(columnIndex).dayIndex).getHour((columnIndex - weatherIndexs.get(columnIndex).hourIndex) * countDayIndex).getChance_of_snow();
                 }
             }
         return "";

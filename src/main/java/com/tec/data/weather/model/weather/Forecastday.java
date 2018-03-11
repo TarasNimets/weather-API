@@ -28,6 +28,7 @@ public final class Forecastday {
             System.out.println("Incorrect hour index");
             return null;
         }
+        System.out.println("index " + index);
         return hour[index];
     }
 

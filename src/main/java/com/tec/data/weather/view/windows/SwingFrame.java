@@ -107,7 +107,7 @@ public final class SwingFrame extends JFrame {
         initShowTable();
         initShowWeatherButton();
         resizedJFrame();
-        setTitle("Weather API v.1.0");
+        setTitle("Weather API v.1.1");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -305,9 +305,7 @@ public final class SwingFrame extends JFrame {
 
         };
 
-        searchButton.addActionListener(e -> {
-            cityEntered();
-        });
+        searchButton.addActionListener(e -> cityEntered());
     }
 
     private void cityEntered() {
