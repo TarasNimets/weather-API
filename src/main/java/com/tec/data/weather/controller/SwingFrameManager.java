@@ -91,11 +91,19 @@ public final class SwingFrameManager {
         Day generalWeatherTomorrow = weather.getForecast().getForecastday(1).getDay();
 
         generalWTextArea.setText(GeneralWeather.getGeneralWeather(generalWeatherToday, generalWeatherTomorrow));
+        if (weather.getForecast().getForecastday(0).getHour() == null) {
+        	Error.errorMessage("apixu.com resource changed the response content, so one of the three program modules doesn't work");
+        	return;
+        }
         TableRenderer.getInstance().setWeather(weather);
         changeTableModel(previosButtonSelected);
     }
 
     public final void changeTableModel(String previosButtonSelected) {
+        if (weather.getForecast().getForecastday(0).getHour() == null) {
+        	Error.errorMessage("apixu.com resource changed the response content, so one of the three program modules doesn't work");
+        	return;
+        }
         if (previosButtonSelected.equals(NEXT_DAY)) {
             table.setModel(nextDayTableModel);
             if (weather != null)
